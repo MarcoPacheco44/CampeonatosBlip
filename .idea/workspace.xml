@@ -30,8 +30,8 @@
       <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+            <state relative-caret-position="491">
+              <caret line="34" column="16" lean-forward="false" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -52,10 +52,18 @@
       <file leaf-file-name="League.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/League.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="76" column="55" lean-forward="false" selection-start-line="76" selection-start-column="55" selection-end-line="76" selection-end-column="55" />
+            <state relative-caret-position="-207">
+              <caret line="178" column="40" lean-forward="true" selection-start-line="178" selection-start-column="40" selection-end-line="178" selection-end-column="40" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#componentDidMount#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#sum#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#goal#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#fillTable#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#sort#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#sortName#0;n#League#0" expanded="false" />
+                <element signature="n#!!block;n#sortSum#0;n#League#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -101,8 +109,8 @@
         <option value="$PROJECT_DIR$/src/Campeonatos.js" />
         <option value="$PROJECT_DIR$/src/Competitions.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/League.js" />
       </list>
     </option>
@@ -610,12 +618,12 @@
       <updated>1522149995597</updated>
       <workItem from="1522149997906" duration="14332000" />
       <workItem from="1522226573336" duration="9697000" />
-      <workItem from="1522313450346" duration="5527000" />
+      <workItem from="1522313450346" duration="13677000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29556000" />
+    <option name="totallyTimeSpent" value="37706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -696,6 +704,14 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#componentDidMount#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sum#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#goal#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#fillTable#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sort#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sortName#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sortSum#0;n#League#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -751,14 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Competitions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1189">
@@ -787,12 +795,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="34" column="16" lean-forward="false" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/League.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="76" column="55" lean-forward="false" selection-start-line="76" selection-start-column="55" selection-end-line="76" selection-end-column="55" />
+        <state relative-caret-position="-207">
+          <caret line="178" column="40" lean-forward="true" selection-start-line="178" selection-start-column="40" selection-end-line="178" selection-end-column="40" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#componentDidMount#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sum#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#goal#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#fillTable#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sort#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sortName#0;n#League#0" expanded="false" />
+            <element signature="n#!!block;n#sortSum#0;n#League#0" expanded="false" />
           </folding>
         </state>
       </provider>

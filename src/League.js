@@ -12,9 +12,9 @@ class League extends Component {
             standings: null,
             id: this.props.match.params.id,
             season: this.props.match.params.season,
-            sort:{
-                column:null,
-                type:null,
+            sort: {
+                column: null,
+                type: null,
             }
         };
 
@@ -26,34 +26,163 @@ class League extends Component {
         }
     }
 
-    sortName(header) {
-        var dados = this.state.standings;
 
-        dados.sort(function (a,b) {
-            var nameA= a[header].toUpperCase();
-            var nameB= b[header].toUpperCase();
 
-            if(nameA < nameB){
-                return -1;
-            }
-            if(nameA > nameB ){
-                return 1;
-            }
-            return 0;
-        });
-        const sort ={column:header,type:'asc'};
-        const estado=Object.assign({},this.state,{standings:dados,sort:sort});
-        this.setState(estado);
+    sum(team, column) {
+        return parseInt(team.away[column]) + parseInt(team.home[column]);
     }
 
-    sort(header){
+    goal(team) {
+        return parseInt(team.away.goals_against) + parseInt(team.away.goals_scored) + parseInt(team.home.goals_against) + parseInt(team.home.goals_scored);
+    }
+
+    fillTable(standings) {
+        if (standings !== null) {
+            return standings.map((team) => {
+                return (
+                    <tr>
+                        <td>{team.position}</td>
+                        <td>{team.team_name} </td>
+                        <td>{this.sum(team, 'games_played')}</td>
+                        <td>{this.sum(team, 'won')}</td>
+                        <td>{this.sum(team, 'draw')}</td>
+                        <td>{this.sum(team, 'lost')}</td>
+                        <td>{this.goal(team)}</td>
+                        <td>{team.total.goal_difference}</td>
+                        <td>{team.total.points}</td>
+                    </tr>
+                )
+            });
+        }
+    }
+
+    sort(header) {
         var dados = this.state.standings;
+        const sort = this.state.sort;
+
+        if (sort.column !== header || sort.type !== 'asc') {
+            dados.sort(function (a, b) {
+                return (header !== 'points') ? parseInt(a[header]) - parseInt(b[header]) : parseInt(a['total']['points']) - parseInt(b['total']['points']);
+            });
+            const changeSort = {column: header, type: 'asc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: changeSort});
+            this.setState(estado);
+        } else {
+            dados.sort(function (a, b) {
+                return (header !== 'points') ? parseInt(b[header]) - parseInt(a[header]) : parseInt(b['total']['points']) - parseInt(a['total']['points']);
+            });
+            const changeSort = {column: header, type: 'desc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: changeSort});
+            this.setState(estado);
+        }
+    }
+
+    sortName(header) {
+        var dados = this.state.standings;
+        const sort = this.state.sort;
+
+        if (sort.column !== header || sort.type !== 'asc') {
+            dados.sort(function (a, b) {
+                var nameA = a.team_name.toUpperCase();
+                var nameB = b.team_name.toUpperCase();
+
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+            const sort = {column: header, type: 'asc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }else{
+            dados.sort(function (a, b) {
+                var nameA = a.team_name.toUpperCase();
+                var nameB = b.team_name.toUpperCase();
+
+                if (nameA > nameB) {
+                    return -1;
+                }
+                if (nameA < nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+            const sort = {column: header, type: 'desc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }
+    }
+
+    sortSum(header) {
+        var self = this;
+        var dados = this.state.standings;
+
+        const sort = this.state.sort;
+
+        if (sort.column !== header || sort.type !== 'asc') {
+            dados.sort(function (a, b) {
+                return self.sum(a, header) - self.sum(b, header);
+            });
+            const sort = {column: header, type: 'asc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }else{
+            dados.sort(function (a, b) {
+                return self.sum(b, header) - self.sum(a, header);
+            });
+            const sort = {column: header, type: 'desc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }
+    }
+
+    sortGoal(header) {
+        var self = this;
+        var dados = this.state.standings;
+        const sort = this.state.sort;
+
+        if (sort.column !== header || sort.type !== 'asc') {
+            dados.sort(function (a, b) {
+                return self.goal(a) - self.goal(b);
+            });
+            const sort = {column: header, type: 'asc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }else{
+            dados.sort(function (a, b) {
+                return self.goal(b) - self.goal(a);
+            });
+            const sort = {column: header, type: 'desc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }
+    }
+
+    sortDifference(header) {
+        var self = this;
+        var dados = this.state.standings;
+
+        const sort = this.state.sort;
+
+        if (sort.column !== header || sort.type !== 'asc') {
         dados.sort(function (a, b) {
-            return (header!=='points')?parseInt(a[header]) - parseInt(b[header]):parseInt(a['total']['points']) - parseInt(b['total']['points']);
+            return parseInt(a.total.goal_difference) - parseInt(b.total.goal_difference);
         });
-        const sort ={column:header,type:'asc'};
-        const estado=Object.assign({},this.state,{standings:dados,sort:sort});
+        const sort = {column: header, type: 'asc'};
+        const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
         this.setState(estado);
+
+        } else{
+            dados.sort(function (a, b) {
+                return parseInt(b.total.goal_difference) - parseInt(a.total.goal_difference);
+            });
+            const sort = {column: header, type: 'desc'};
+            const estado = Object.assign({}, this.state, {standings: dados, sort: sort});
+            this.setState(estado);
+        }
     }
 
     getLeagueData() {
@@ -72,118 +201,23 @@ class League extends Component {
                 <table className="table">
                     <thead>
                     <tr>
-                        <th onClick={()=>this.sort('position')}>Position</th>
-                        <th onClick={()=>this.sortName()}>Team Name</th>
-                        <th onClick={()=>this.sortPlayed('Played')}>Played</th>
-                        <th onClick={()=>this.sortWon('Won')}>Won</th>
-                        <th onClick={()=>this.sortDrawn('Drawn')}>Drawn</th>
-                        <th onClick={()=>this.sortLost('Lost')}>Lost</th>
-                        <th onClick={()=>this.sortGoal('Goal')}>Goal</th>
-                        <th onClick={()=>this.sortDifference('Difference')}>Difference</th>
-                        <th onClick={()=>this.sort('points')}>Points</th>
+                        <th onClick={() => this.sort('position')}>Position</th>
+                        <th onClick={() => this.sortName()}>Team Name</th>
+                        <th onClick={() => this.sortSum('games_played')}>Played</th>
+                        <th onClick={() => this.sortSum('won')}>Won</th>
+                        <th onClick={() => this.sortSum('draw')}>Drawn</th>
+                        <th onClick={() => this.sortSum('lost')}>Lost</th>
+                        <th onClick={() => this.sortGoal('goals')}>Goal</th>
+                        <th onClick={() => this.sortDifference('difference')}>Difference</th>
+                        <th onClick={() => this.sort('points')}>Points</th>
                     </tr>
                     </thead>
-
-                    <TeamsStanding standings={this.state.standings}/>
-
+                    <tbody>
+                    {this.fillTable(this.state.standings)}
+                    </tbody>
                 </table>
             </div>
         );
     }
 }
-
-
-class TeamsStanding extends React.Component {
-
-    played(team){
-        return parseInt(team.away.games_played) + parseInt(team.home.games_played);
-    }
-    won(team){
-        return parseInt(team.away.won) + parseInt(team.home.won);
-    }
-    drawn(team){
-        return parseInt(team.away.draw) + parseInt(team.home.draw);
-    }
-    lost(team){
-        return parseInt(team.away.lost) + parseInt(team.home.lost);
-    }
-
-    goal(team){
-        return parseInt(team.away.goals_against)+parseInt(team.away.goals_scored) + parseInt(team.home.goals_against) + parseInt(team.home.goals_scored);
-    }
-
-
-    fillTable(standings) {
-        if (standings !== null) {
-            return standings.map((team) => {
-                return (
-                    <tr>
-                        <td>{team.position}</td>
-                        <td>{team.team_name} </td>
-                        <td>{this.played(team)}</td>
-                        <td>{this.won(team)}</td>
-                        <td>{this.drawn(team)}</td>
-                        <td>{this.lost(team)}</td>
-                        <td>{this.goal(team)}</td>
-                        <td>{team.total.goal_difference}</td>
-                        <td>{team.total.points}</td>
-                    </tr>
-                )
-            });
-        }
-
-    }
-
-    render() {
-        const standings = this.props.standings;
-        return (
-            <tbody>
-            {this.fillTable(standings)}
-            </tbody>
-        );
-    }
-
-
-}
-
-
-//
-// class CompetitionsTable extends React.Component{
-//     competitions(competitions){
-//         if(competitions!==null) {
-//             return competitions.map(competition => {
-//                 return(<CompetitionItem competition={competition} onClick={()=>this.renderCompetition(competition)} />)
-//             });
-//         }
-//     }
-//
-//     renderCompetition(){
-//
-//     }
-//
-//     render(){
-//         const competitions =this.props.competitions;
-//         console.log(competitions);
-//         return(
-//             <div className="table">
-//                 {this.competitions(competitions)}
-//             </div>
-//         )
-//     }
-// }
-//
-// class CompetitionItem extends React.Component{
-//
-//     render(){
-//         const competition = this.props.competition;
-//         return(
-//             <div className="competition">
-//                 <Link to={'/competition/'+competition.id}>{competition.name}</Link>
-//             </div>
-//         )
-//     }
-//
-//
-// }
-
 export default League;

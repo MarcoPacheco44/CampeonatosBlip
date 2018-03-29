@@ -32,6 +32,10 @@
   margin-bottom: 50px !important;
 }
 
+.table thead tr :hover  {
+  cursor: pointer !important;
+}
+
 .competition:hover{
     background-color: black;
     color: white;
