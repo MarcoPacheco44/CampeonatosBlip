@@ -1,76 +1,91 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
-const api_key= "HOLCAStI6Z0OfdoPbjdSg5b41Q17w2W5P4WuoIBdC66Z54kUEvGWPIe33UYC";
+
+const api_key = "HOLCAStI6Z0OfdoPbjdSg5b41Q17w2W5P4WuoIBdC66Z54kUEvGWPIe33UYC";
+
+
+
 
 class Competitions extends Component {
-   constructor(props) {
-       super(props);
-       this.state = {
-           url: "https://soccer.sportmonks.com/api/v2.0/leagues?api_token=",
-           competitions: null,
-       };
-   }
-    componentDidMount () {
+    constructor(props) {-
+        super(props);
+        this.state = {
+            url: "https://soccer.sportmonks.com/api/v2.0/leagues?api_token=",
+            competitions: null,
+        };
+    }
+
+    componentDidMount() {
         this.getCompetitionsData();
     }
 
-    getCompetitionsData(){
-        const self=this;
-        fetch(self.state.url+""+api_key).then(results=>results.json()).then(function(data){
+
+    getCompetitionsData() {
+        const self = this;
+        fetch(self.state.url + "" + api_key).then(results => results.json()).then(function (data) {
             console.log(data.data);
-            const estado = Object.assign({},self.state,{competitions:data.data});
+            const estado = Object.assign({}, self.state, {competitions: data.data});
             self.setState(estado);
         });
-        console.log(self.state.url+""+api_key);
+        console.log(self.state.url + "" + api_key);
     }
 
     render() {
-        return (
-            <div className="listagem-campeaonatos">
-                <h2 className="titulo-campeonatos">Competitions Listing</h2>
-                <CompetitionsTable competitions={this.state.competitions} />
+        return (<div>
+                <div className="container">
+                    <div className="listagem-campeonatos">
+                        <h2 className="titulo-campeonatos">Competitions Listing</h2>
+                        <CompetitionsListing competitions={this.state.competitions}/>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
-class CompetitionsTable extends React.Component{
-    competitions(competitions){
-        if(competitions!==null) {
+class CompetitionsListing extends React.Component {
+    competitions(competitions) {
+        if (competitions !== null) {
             return competitions.map(competition => {
-                return(<CompetitionItem competition={competition} onClick={()=>this.renderCompetition(competition)} />)
+                return (
+                    <CompetitionItem competition={competition} onClick={() => this.renderCompetition(competition)}/>)
             });
         }
     }
 
-    renderCompetition(){
+    renderCompetition() {
 
     }
 
-    render(){
-        const competitions =this.props.competitions;
+    render() {
+        const competitions = this.props.competitions;
         console.log(competitions);
-        return(
-            <div className="table">
+        return (
+            <div className="competition-listing">
                 {this.competitions(competitions)}
             </div>
+
         )
     }
 }
 
-class CompetitionItem extends React.Component{
+class CompetitionItem extends React.Component {
 
-    render(){
+    render() {
         const competition = this.props.competition;
-        return(
-            <div className="competition">
-                <Link to={'/competition/'+competition.id+'/'+competition.current_season_id}>{competition.name}</Link>
-            </div>
+        return (
+            <Link to={'/competition/' + competition.id + '/' + competition.current_season_id}>
+                <div className="competition">
+                    {competition.name}
+                </div>
+            </Link>
         )
     }
 
 
 }
+
+
 
 export default Competitions;

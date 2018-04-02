@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/campeonatos.iml" filepath="$PROJECT_DIR$/.idea/campeonatos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CampeonatosBlip.iml" filepath="$PROJECT_DIR$/CampeonatosBlip.iml" />
     </modules>
   </component>
 </project>
