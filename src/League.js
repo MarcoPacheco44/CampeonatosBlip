@@ -140,10 +140,8 @@ class League extends Component {
     }
 
     toggle(estado) {
-        const team = estado ? team : null;
-        const newState = Object.assign({}, this.state, {show_modal: !estado});
+        const newState = Object.assign({}, this.state, {show_modal: !estado,team:null});
         this.setState(newState);
-
     }
 
     sortGoal(header) {
@@ -172,19 +170,21 @@ class League extends Component {
         const self = this;
         fetch(self.state.url + "" + self.state.season + "?api_token=" + api_key).then(results => results.json()).then(function (data) {
            console.log(data.length);
-            if( data.data !== null) {
-               const estado = Object.assign({}, self.state, {
-                   standings: data.data[0].standings.data,
-                   is_loading: false
-               });
-               self.setState(estado);
-           }
+            if( data.data[0] === undefined) {
+
+           }else{
+                const estado = Object.assign({}, self.state, {
+                    standings: data.data[0].standings.data,
+                    is_loading: false
+                });
+                self.setState(estado);
+            }
         });
         console.log(self.state.url + "" + self.state.season + "?api_token=" + api_key);
     }
 
     showTeamModal(team) {
-        const estado = Object.assign({}, this.state, {show_modal: true, team: team});
+        const estado = Object.assign({}, this.state, {team: team,show_modal: true});
         this.setState(estado);
     }
 
@@ -195,7 +195,7 @@ class League extends Component {
 
     render() {
         const externalCloseBtn = <button onClick={this.toggle} className="close"
-                                         style={{position: 'absolute', top: '15px', right: '15px'}}
+                                         style={{color:'red',position: 'absolute', top: '15px', right: '15px'}}
                                          onClick={() => this.toggle(this.state.show_modal)}>&times;</button>;
         return (
             <div className="container">
@@ -235,26 +235,31 @@ class League extends Component {
 
 class MyModal extends React.Component {
     state = {
-        team: null,
+        is_loading:true,
+        team:this.props.team,
+        squad: null,
         estado: this.props.estado
     };
 
     componentDidMount() {
         if (this.props.team !== null) {
-            this.getTeamPlayers();
+            this.setState({team_id:this.props.team},()=>this.getTeamPlayers());
         }
     }
 
 
+    componentWillReceiveProps(){
+            this.setState({team_id:this.props.team},()=>this.getTeamPlayers());
+    }
+
 
     getTeamPlayers() {
         const self = this;
-        fetch("https://soccer.sportmonks.com/api/v2.0/teams/" + self.props.team.team_id + "?api_token=" + api_key + "&include=squad").then(results => results.json()).then(function (data) {
-            console.log(data.data);
-            const estado = Object.assign({}, self.state, {team: data.data});
+        fetch("https://soccer.sportmonks.com/api/v2.0/teams/" + self.state.team.team_id + "?api_token=" + api_key + "&include=squad").then(results => results.json()).then(function (data) {
+            const estado = Object.assign({}, self.state, {squad: data.data});
             self.setState(estado);
         });
-        console.log("https://soccer.sportmonks.com/api/v2.0/teams/" + self.props.team.team_id + "?api_token=" + api_key + "&include=squad");
+        console.log("https://soccer.sportmonks.com/api/v2.0/teams/" + self.state.team.team_id + "?api_token=" + api_key + "&include=squad");
     }
 
     fillTeamPlayers(players) {
@@ -286,14 +291,14 @@ class MyModal extends React.Component {
                         <div className="row">
                             <div className="col-6">
 
-                                <img className="img-fluid" src={this.state.team ? this.state.team.logo_path : ''}
+                                <img className="img-fluid" src={this.state.squad ? this.state.squad.logo_path : ''}
                                      alt=""/>
                             </div>
                             <div className="col-6">
-                                <div className="team_name">{this.props.team.team_name}</div>
+                                <div className="team_name">{this.state.squad?this.state.squad.name:null}</div>
                                 <div className="row team_information">
-                                <div className="team_position col-6"> <b>Position : </b> {this.props.team.position}</div>
-                                <div className="team_form col-6"><b>Recent form : </b> {this.props.team.recent_form}</div>
+                                <div className="team_position col-6"> <b>Position : </b> {this.state.team?this.state.team.position:null}</div>
+                                <div className="team_form col-6"><b>Recent form : </b> {this.state.team?this.state.team.recent_form:null}</div>
                                 </div>
                             </div>
                         </div>
@@ -315,7 +320,7 @@ class MyModal extends React.Component {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.team ? this.fillTeamPlayers(this.state.team.squad.data) : null}
+                                {this.state.squad ? this.fillTeamPlayers(this.state.squad.squad.data) : null}
                                 </tbody>
                             </table>
                         </div>
@@ -341,7 +346,6 @@ class Header extends React.Component {
 
     getSeasons() {
         var self = this;
-
         fetch('https://soccer.sportmonks.com/api/v2.0/seasons?api_token=' + api_key).then(response => response.json())
             .then(function (data) {
                 const estado = Object.assign({}, self.state, {seasons: data.data,season:self.props.season,league:self.props.league});
@@ -351,9 +355,8 @@ class Header extends React.Component {
 
     fillSeasons() {
         return this.state.seasons.map((season) => {
-            if(season.league_id== this.state.league)
-                    return (<option value={season.id}>{season.name}</option>);
-        }
+            if(season.league_id == this.state.league)
+                    return (<option value={season.id}>{season.name}</option>);}
         );
     }
 

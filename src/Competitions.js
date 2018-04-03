@@ -60,7 +60,6 @@ class CompetitionsListing extends React.Component {
 
     render() {
         const competitions = this.props.competitions;
-        console.log(competitions);
         return (
             <div className="competition-listing">
                 {this.competitions(competitions)}
