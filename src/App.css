@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+body{
+    background-color: #222222;
+    background-size: 100% ;
+    font-family: "Source Code Pro";
+    height: 100vh;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -13,19 +20,113 @@
   padding: 20px;
   color: white;
 }
-
+.selectSeason{
+    float: right;
+}
 .App-title {
   font-size: 1.5em;
+}
+
+.modal-dialog{
+  max-width:1000px;
+    background-color: #222222;
+}
+
+.modal-body .team_information{
+    vertical-align: center;
+    line-height: 100px;
+}
+
+.team_name{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.team_position{
+    text-align: center;
+}
+
+.team_form{
+    text-align: center;
 }
 
 .App-intro {
   font-size: large;
 }
 
-.table{
-  width:auto;
+.go-back i{
+
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+    color: #000;
+}
+
+.go-back {
+    float: left;
+}
+
+.competition-listing{
+    color:white;
     height: auto;
-  margin:auto;
+    max-width: 250px;
+    margin:auto;
+    margin-top:7%;
+}
+
+.competition{
+    text-decoration: none;
+    background-color:#BA2D0B;
+    height: 65px;
+    margin-bottom: 25px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 65px;
+}
+
+.competition-listing .competition :hover {
+    cursor:pointer;
+    opacity: 0.7;
+    background-color:#BA2D0B;
+}
+
+.listagem-campeonatos h2{
+    color:oldlace;
+}
+
+
+.listagem-campeonatos {
+    padding-top: 5%;
+}
+
+.competition-listing a {
+    text-decoration: inherit;
+    color:inherit;
+    opacity: 1;
+}
+
+table tr{
+    background-color: #D5F2E3;
+    opacity: 0.7;
+}
+table tr:hover {
+    background-color: #3D5467;
+    cursor: pointer;
+}
+
+table th {
+    background-color: #BA2D0B;
+    color:white;
+}
+
+table tr:nth-child(even){
+    background-color: #8BAAAD;
+    opacity: 0.7;
+}
+
+table tr:hover:nth-child(even) {
+    background-color: #3D5467;
+    opacity: 0.7;
 }
 
 .table tr td{
@@ -37,7 +138,7 @@
 }
 
 .competition:hover{
-    background-color: black;
+    opacity:0.7;
     color: white;
 }
 
