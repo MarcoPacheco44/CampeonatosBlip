@@ -1,6 +1,4 @@
-
 import React from 'react';
-import Competitions from './Competitions';
+import League from './League';
 import renderer from 'react-test-renderer';
-
 

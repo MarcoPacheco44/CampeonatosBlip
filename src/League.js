@@ -264,7 +264,7 @@ class MyModal extends React.Component {
         const players=this.state.squad.squad.data;
         const self = this;
         players.map((player) => {
-            fetch("https://soccer.sportmonks.com/api/v2.0/players/" + player + "?api_token=" + api_key).then(results => results.json()).then(function (data) {
+            fetch("https://soccer.sportmonks.com/api/v2.0/players/" + player.player_id + "?api_token=" + api_key).then(results => results.json()).then(function (data) {
                 let array =self.state.player;
                 array[player.player_id] = data.data.fullname;
                 const newState=Object.assign({},self.state,{player:array});
@@ -279,7 +279,7 @@ class MyModal extends React.Component {
             return players.map((player) => {
                 return (
                     <tr>
-                        <td>{this.getPlayerName(player.player_id)}</td>
+                        <td>{this.state.player[player.player_id]}</td>
                         <td>{player.position_id} </td>
                         <td>{player.number}</td>
                         <td>{player.appearences}</td>

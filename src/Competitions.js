@@ -4,11 +4,8 @@ import './App.css';
 
 const api_key = "HOLCAStI6Z0OfdoPbjdSg5b41Q17w2W5P4WuoIBdC66Z54kUEvGWPIe33UYC";
 
-
-
-
 class Competitions extends Component {
-    constructor(props) {-
+    constructor(props) {
         super(props);
         this.state = {
             competitions: null,
@@ -80,7 +77,5 @@ class CompetitionItem extends React.Component {
         )
     }
 }
-
-
 
 export default Competitions;

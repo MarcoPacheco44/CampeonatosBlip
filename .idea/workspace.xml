@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a4f78f1-51ac-4142-bb1c-b6c9ae3d9123" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Competitions.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Competitions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Competitions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Competitions.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Competitions.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/League.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/League.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,13 +19,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="League.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="League.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/League.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="271" column="14" lean-forward="true" selection-start-line="271" selection-start-column="14" selection-end-line="271" selection-end-column="14" />
+            <state relative-caret-position="371">
+              <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
               <folding>
-                <element signature="n#League#0" />
                 <element signature="n#!!block;n#fillTable#0;n#League#0" />
                 <element signature="n#!!block;n#sort#0;n#League#0" />
                 <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -36,19 +34,9 @@
                 <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
                 <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
                 <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-                <element signature="n#!!block;n#render#0;n#League#0" />
                 <element signature="n#Header#0" />
                 <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -62,9 +50,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Competitions.test.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Competitions.test.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Competitions.test.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
@@ -79,8 +71,8 @@
       <file leaf-file-name="Competitions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Competitions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="69">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -88,8 +80,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+            <state relative-caret-position="460">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -130,12 +122,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/Competitions.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/Competitions.test.js" />
         <option value="$PROJECT_DIR$/src/League.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/Competitions.js" />
+        <option value="$PROJECT_DIR$/src/Competitions.test.js" />
       </list>
     </option>
   </component>
@@ -266,12 +258,12 @@
       <workItem from="1522655605613" duration="27764000" />
       <workItem from="1522770004416" duration="10118000" />
       <workItem from="1522959636188" duration="440000" />
-      <workItem from="1522960510326" duration="5376000" />
+      <workItem from="1522960510326" duration="8528000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55336000" />
+    <option name="totallyTimeSpent" value="58488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
@@ -293,6 +285,7 @@
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -304,7 +297,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +311,6 @@
         <state relative-caret-position="6371">
           <caret line="277" column="31" lean-forward="true" selection-start-line="277" selection-start-column="31" selection-end-line="277" selection-end-column="31" />
           <folding>
-            <element signature="n#League#0" />
             <element signature="n#!!block;n#fillTable#0;n#League#0" />
             <element signature="n#!!block;n#sort#0;n#League#0" />
             <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -329,7 +320,6 @@
             <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
             <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
             <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
             <element signature="n#Header#0" />
             <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
           </folding>
@@ -378,7 +368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="n#League#0" />
             <element signature="n#!!block;n#fillTable#0;n#League#0" />
             <element signature="n#!!block;n#sort#0;n#League#0" />
             <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -388,7 +377,6 @@
             <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
             <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
             <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
             <element signature="n#Header#0" />
             <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
           </folding>
@@ -438,7 +426,6 @@
         <state relative-caret-position="6762">
           <caret line="294" column="4" lean-forward="true" selection-start-line="294" selection-start-column="4" selection-end-line="294" selection-end-column="4" />
           <folding>
-            <element signature="n#League#0" />
             <element signature="n#!!block;n#fillTable#0;n#League#0" />
             <element signature="n#!!block;n#sort#0;n#League#0" />
             <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -448,7 +435,6 @@
             <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
             <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
             <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
             <element signature="n#Header#0" />
             <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
           </folding>
@@ -491,7 +477,6 @@
         <state relative-caret-position="3220">
           <caret line="140" column="41" selection-start-line="140" selection-start-column="41" selection-end-line="140" selection-end-column="41" />
           <folding>
-            <element signature="n#League#0" />
             <element signature="n#!!block;n#fillTable#0;n#League#0" />
             <element signature="n#!!block;n#sort#0;n#League#0" />
             <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -501,7 +486,6 @@
             <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
             <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
             <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
             <element signature="n#Header#0" />
             <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
           </folding>
@@ -520,7 +504,6 @@
         <state relative-caret-position="5980">
           <caret line="260" column="120" selection-start-line="260" selection-start-column="120" selection-end-line="260" selection-end-column="120" />
           <folding>
-            <element signature="n#League#0" />
             <element signature="n#!!block;n#fillTable#0;n#League#0" />
             <element signature="n#!!block;n#sort#0;n#League#0" />
             <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -530,7 +513,6 @@
             <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
             <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
             <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
             <element signature="n#Header#0" />
             <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
           </folding>
@@ -549,7 +531,6 @@
         <state relative-caret-position="4232">
           <caret line="267" column="53" selection-start-line="267" selection-start-column="53" selection-end-line="267" selection-end-column="53" />
           <folding>
-            <element signature="n#League#0" />
             <element signature="n#!!block;n#fillTable#0;n#League#0" />
             <element signature="n#!!block;n#sort#0;n#League#0" />
             <element signature="n#!!block;n#sortName#0;n#League#0" />
@@ -559,7 +540,6 @@
             <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
             <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
             <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
             <element signature="n#Header#0" />
             <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
           </folding>
@@ -580,12 +560,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        <state>
+          <caret selection-end-line="2" selection-end-column="24" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -597,10 +577,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
+    <entry file="file://$PROJECT_DIR$/src/League.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        <state relative-caret-position="371">
+          <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
+          <folding>
+            <element signature="n#!!block;n#fillTable#0;n#League#0" />
+            <element signature="n#!!block;n#sort#0;n#League#0" />
+            <element signature="n#!!block;n#sortName#0;n#League#0" />
+            <element signature="n#!!block;n#sortOverall#0;n#League#0" />
+            <element signature="n#!!block;n#toggle#0;n#League#0" />
+            <element signature="n#!!block;n#sortGoal#0;n#League#0" />
+            <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
+            <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
+            <element signature="n#!!block;n#changeSeason#0;n#League#0" />
+            <element signature="n#Header#0" />
+            <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,35 +614,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Competitions.test.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Competitions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        <state relative-caret-position="69">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/League.js">
+    <entry file="file://$PROJECT_DIR$/src/Competitions.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="271" column="14" lean-forward="true" selection-start-line="271" selection-start-column="14" selection-end-line="271" selection-end-column="14" />
-          <folding>
-            <element signature="n#League#0" />
-            <element signature="n#!!block;n#fillTable#0;n#League#0" />
-            <element signature="n#!!block;n#sort#0;n#League#0" />
-            <element signature="n#!!block;n#sortName#0;n#League#0" />
-            <element signature="n#!!block;n#sortOverall#0;n#League#0" />
-            <element signature="n#!!block;n#toggle#0;n#League#0" />
-            <element signature="n#!!block;n#sortGoal#0;n#League#0" />
-            <element signature="n#!!block;n#getLeagueData#0;n#League#0" />
-            <element signature="n#!!block;n#showTeamModal#0;n#League#0" />
-            <element signature="n#!!block;n#changeSeason#0;n#League#0" />
-            <element signature="n#!!block;n#render#0;n#League#0" />
-            <element signature="n#Header#0" />
-            <element signature="n#!!block;n#getSeasons#0;n#Header#0" />
-          </folding>
+        <state relative-caret-position="46">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
         </state>
       </provider>
     </entry>
