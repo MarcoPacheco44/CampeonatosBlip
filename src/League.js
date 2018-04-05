@@ -21,7 +21,7 @@ class League extends Component {
             },
             show_modal: false,
             team: null,
-            is_loading:true,
+            is_loading: true,
         };
 
     }
@@ -117,7 +117,7 @@ class League extends Component {
     }
 
     sortOverall(header) {
-        var self = this;
+
         var dados = this.state.standings;
 
         const sort = this.state.sort;
@@ -140,7 +140,7 @@ class League extends Component {
     }
 
     toggle(estado) {
-        const newState = Object.assign({}, this.state, {show_modal: !estado,team:null});
+        const newState = Object.assign({}, this.state, {show_modal: !estado, team: null});
         this.setState(newState);
     }
 
@@ -169,10 +169,8 @@ class League extends Component {
     getLeagueData() {
         const self = this;
         fetch(self.state.url + "" + self.state.season + "?api_token=" + api_key).then(results => results.json()).then(function (data) {
-           console.log(data.length);
-            if( data.data[0] === undefined) {
-
-           }else{
+            if (data.data[0] === undefined) {
+            } else {
                 const estado = Object.assign({}, self.state, {
                     standings: data.data[0].standings.data,
                     is_loading: false
@@ -180,26 +178,27 @@ class League extends Component {
                 self.setState(estado);
             }
         });
-        console.log(self.state.url + "" + self.state.season + "?api_token=" + api_key);
     }
 
     showTeamModal(team) {
-        const estado = Object.assign({}, this.state, {team: team,show_modal: true});
+        const estado = Object.assign({}, this.state, {team: team, show_modal: true});
         this.setState(estado);
     }
 
     changeSeason(season) {
-        const estado=Object.assign({},this.state,{season:season,is_loading:true});
-        this.setState(estado,()=>this.getLeagueData());
+        const estado = Object.assign({}, this.state, {season: season, is_loading: true});
+        this.setState(estado, () => this.getLeagueData());
     }
 
     render() {
         const externalCloseBtn = <button onClick={this.toggle} className="close"
-                                         style={{color:'red',position: 'absolute', top: '15px', right: '15px'}}
+                                         style={{color: 'red', position: 'absolute', top: '15px', right: '15px'}}
                                          onClick={() => this.toggle(this.state.show_modal)}>&times;</button>;
-        return (
+
+        const {id,season,is_loading,standings,team,show_modal}=this.state;
+            return(
             <div className="container">
-                <Header onChange={(e)=>this.changeSeason(e)} league={this.state.id} season={this.state.season}/>
+                <Header onChange={(e) => this.changeSeason(e)} league={id} season={season}/>
                 <div className="listagem-campeonatos">
 
                     <h2 className="titulo-league">Standings</h2>
@@ -218,15 +217,15 @@ class League extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.is_loading!==true?this.fillTable(this.state.standings):null}
+                        {is_loading !== true ? this.fillTable(standings) : null}
                         </tbody>
                     </table>
 
                 </div>
                 {
-                    this.state.team !== null ?
-                        <MyModal onClick={() => this.toggle(this.state.show_modal)} external={externalCloseBtn}
-                                 team={this.state.team} estado={this.state.show_modal}/> : null
+                    team !== null ?
+                        <MyModal onClick={() => this.toggle(show_modal)} external={externalCloseBtn}
+                                 team={team} estado={show_modal}/> : null
                 }
             </div>
         );
@@ -235,31 +234,44 @@ class League extends Component {
 
 class MyModal extends React.Component {
     state = {
-        is_loading:true,
-        team:this.props.team,
+        is_loading: true,
+        team: this.props.team,
+        player: Array(35).fill(null),
         squad: null,
         estado: this.props.estado
     };
 
     componentDidMount() {
         if (this.props.team !== null) {
-            this.setState({team_id:this.props.team},()=>this.getTeamPlayers());
+            this.setState({team: this.props.team}, () => this.getTeamPlayers());
         }
     }
 
-
-    componentWillReceiveProps(){
-            this.setState({team_id:this.props.team},()=>this.getTeamPlayers());
+    componentWillReceiveProps() {
+        this.setState({team: this.props.team}, () => this.getTeamPlayers());
     }
-
 
     getTeamPlayers() {
         const self = this;
         fetch("https://soccer.sportmonks.com/api/v2.0/teams/" + self.state.team.team_id + "?api_token=" + api_key + "&include=squad").then(results => results.json()).then(function (data) {
             const estado = Object.assign({}, self.state, {squad: data.data});
-            self.setState(estado);
+            self.setState(estado,()=>self.getPlayerNames());
         });
-        console.log("https://soccer.sportmonks.com/api/v2.0/teams/" + self.state.team.team_id + "?api_token=" + api_key + "&include=squad");
+    }
+
+
+    getPlayerNames() {
+        const players=this.state.squad.squad.data;
+        const self = this;
+        players.map((player) => {
+            fetch("https://soccer.sportmonks.com/api/v2.0/players/" + player + "?api_token=" + api_key).then(results => results.json()).then(function (data) {
+                let array =self.state.player;
+                array[player.player_id] = data.data.fullname;
+                const newState=Object.assign({},self.state,{player:array});
+                self.setState(newState);
+            });
+        });
+
     }
 
     fillTeamPlayers(players) {
@@ -267,7 +279,7 @@ class MyModal extends React.Component {
             return players.map((player) => {
                 return (
                     <tr>
-                        <td>{player.player_id}</td>
+                        <td>{this.getPlayerName(player.player_id)}</td>
                         <td>{player.position_id} </td>
                         <td>{player.number}</td>
                         <td>{player.appearences}</td>
@@ -283,22 +295,23 @@ class MyModal extends React.Component {
     }
 
     render() {
-
+        const {estado, external} = this.props;
+        const {squad, team} = this.state;
         return (
             <div>
-                <Modal isOpen={this.props.estado} external={this.props.external}>
+                <Modal isOpen={estado} external={external}>
                     <ModalBody>
                         <div className="row">
                             <div className="col-6">
 
-                                <img className="img-fluid" src={this.state.squad ? this.state.squad.logo_path : ''}
+                                <img className="img-fluid" src={squad ? squad.logo_path : ''}
                                      alt=""/>
                             </div>
                             <div className="col-6">
-                                <div className="team_name">{this.state.squad?this.state.squad.name:null}</div>
+                                <div className="team_name">{squad ? squad.name : null}</div>
                                 <div className="row team_information">
-                                <div className="team_position col-6"> <b>Position : </b> {this.state.team?this.state.team.position:null}</div>
-                                <div className="team_form col-6"><b>Recent form : </b> {this.state.team?this.state.team.recent_form:null}</div>
+                                    <div className="team_position col-lg-6 col-md-6 col-xs-6"><b>Position :</b> {team ? team.position : null}</div>
+                                    <div className="team_form col-lg-6 col-md-6 col-xs-6"><b>Recent form :</b> {team ? team.recent_form : null}</div>
                                 </div>
                             </div>
                         </div>
@@ -320,7 +333,7 @@ class MyModal extends React.Component {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.squad ? this.fillTeamPlayers(this.state.squad.squad.data) : null}
+                                {squad ? this.fillTeamPlayers(squad.squad.data) : null}
                                 </tbody>
                             </table>
                         </div>
@@ -336,8 +349,8 @@ class MyModal extends React.Component {
 class Header extends React.Component {
     state = {
         seasons: null,
-        season:null,
-        league:null
+        season: null,
+        league: null
     };
 
     componentDidMount() {
@@ -345,22 +358,30 @@ class Header extends React.Component {
     }
 
     getSeasons() {
-        var self = this;
+        const self = this;
         fetch('https://soccer.sportmonks.com/api/v2.0/seasons?api_token=' + api_key).then(response => response.json())
             .then(function (data) {
-                const estado = Object.assign({}, self.state, {seasons: data.data,season:self.props.season,league:self.props.league});
+                const estado = Object.assign({}, self.state, {
+                    seasons: data.data,
+                    season: self.props.season,
+                    league: self.props.league
+                });
                 self.setState(estado);
             })
     }
 
     fillSeasons() {
         return this.state.seasons.map((season) => {
-            if(season.league_id == this.state.league)
-                    return (<option value={season.id}>{season.name}</option>);}
+                if (season.league_id == this.state.league)
+                    return (<option value={season.id}>{season.name}</option>);
+            }
         );
     }
 
     render() {
+        const seasons = this.state.seasons;
+        const season = this.props.season;
+
         return (
             <div className="options col-12">
                 <Link to="/" className="pull-left">
@@ -369,8 +390,10 @@ class Header extends React.Component {
                     </div>
                 </Link>
                 <div className="selectSeason pull-right form-group col-lg-2 col-md-4 col-xs-12">
-                    <select onChange={(e)=>{this.props.onChange(e.target.value)}}  value={this.props.season} className="form-control">
-                        {this.state.seasons !== null ? this.fillSeasons() : null}
+                    <select onChange={(e) => {
+                        this.props.onChange(e.target.value)
+                    }} value={season} className="form-control">
+                        {seasons !== null ? this.fillSeasons() : null}
                     </select>
                 </div>
             </div>
