@@ -23,6 +23,11 @@ body{
 .selectSeason{
     float: right;
 }
+button.close{
+    z-index: 9999;
+    font-size:40px;
+}
+
 .App-title {
   font-size: 1.5em;
 }
@@ -59,7 +64,11 @@ body{
     width: 70px;
     height: 70px;
     font-size: 50px;
-    color: #000;
+}
+
+.go-back button {
+    color: white;
+    background-color: #BA2D0B;
 }
 
 .go-back {

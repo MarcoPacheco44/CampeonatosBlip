@@ -30,7 +30,7 @@ class Competitions extends Component {
         return (<div>
                 <div className="container">
                     <div className="listagem-campeonatos">
-                        <h2 className="titulo-campeonatos">Competitions Listing</h2>
+                        <h2 className="titulo-campeonatos">Competitions</h2>
                         <CompetitionsListing competitions={competitions}/>
                     </div>
                 </div>

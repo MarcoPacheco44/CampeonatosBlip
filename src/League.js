@@ -386,7 +386,9 @@ class Header extends React.Component {
             <div className="options col-12">
                 <Link to="/" className="pull-left">
                     <div className="go-back">
+                        <button className="form-control">
                         <i className="fa fa-arrow-left"></i> Back
+                        </button>
                     </div>
                 </Link>
                 <div className="selectSeason pull-right form-group col-lg-2 col-md-4 col-xs-12">
