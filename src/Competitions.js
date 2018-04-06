@@ -4,14 +4,10 @@ import './App.css';
 
 const api_key = "HOLCAStI6Z0OfdoPbjdSg5b41Q17w2W5P4WuoIBdC66Z54kUEvGWPIe33UYC";
 
-
-
-
 class Competitions extends Component {
-    constructor(props) {-
+    constructor(props) {
         super(props);
         this.state = {
-            url: "https://soccer.sportmonks.com/api/v2.0/leagues?api_token=",
             competitions: null,
         };
     }
@@ -23,20 +19,19 @@ class Competitions extends Component {
 
     getCompetitionsData() {
         const self = this;
-        fetch(self.state.url + "" + api_key).then(results => results.json()).then(function (data) {
-            console.log(data.data);
+        fetch("https://soccer.sportmonks.com/api/v2.0/leagues?api_token=" + api_key).then(results => results.json()).then(function (data) {
             const estado = Object.assign({}, self.state, {competitions: data.data});
             self.setState(estado);
         });
-        console.log(self.state.url + "" + api_key);
     }
 
     render() {
+        const competitions =this.state.competitions;
         return (<div>
                 <div className="container">
                     <div className="listagem-campeonatos">
                         <h2 className="titulo-campeonatos">Competitions Listing</h2>
-                        <CompetitionsListing competitions={this.state.competitions}/>
+                        <CompetitionsListing competitions={competitions}/>
                     </div>
                 </div>
             </div>
@@ -81,10 +76,6 @@ class CompetitionItem extends React.Component {
             </Link>
         )
     }
-
-
 }
-
-
 
 export default Competitions;
